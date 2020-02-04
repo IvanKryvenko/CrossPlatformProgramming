@@ -1,5 +1,7 @@
 const readlineSync = require('readline-sync');
-var computerNumber = numberGenerator();
+
+const computerNumber = numberGenerator();
+let tries = 0;
 
 function readNumber() {
     const playerNumber = readlineSync.question('Enter your number: ');
@@ -8,6 +10,7 @@ function readNumber() {
         readNumber();
     }
     const playerNumberArr = playerNumber.split('');
+    console.log(playerNumberArr);
     return playerNumberArr;
 }
 
@@ -35,20 +38,22 @@ function compareNumbers() {
     }
     for(let i = 0; i < computerNumber.length; ++i) {
         for(let j = 0; j < playerNumber.length; ++j) {
-            if (computerNumber[i] == playerNumber[i]) {
+            if (computerNumber[i] == playerNumber[j]) {
                 cows++;
+                break;
             }
         }
     }
     if (bulls == 4) {
+        console.log(`Try: ${tries}`);
         console.log("Thats right! You win!");
     } else {
+        tries++;
         cows -= bulls;
-        console.log(`Bulls: ${bulls}, cows: ${cows}`);
-        console.clear();
+        console.log(`Биків: ${bulls}, cows: ${cows}`);
+        console.log(`Try: ${tries}`);
         compareNumbers();
     }
-    console.clear();
 }
 
 compareNumbers();

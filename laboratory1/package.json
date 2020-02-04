@@ -1,0 +1,15 @@
+{
+  "name": "laboratory1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "consoleGameJS.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "package": "^1.0.1",
+    "readline-sync": "^1.4.10"
+  }
+}

@@ -1,3 +1,11 @@
+const readlineSync = require('readline-sync');
+
+function readNumber() {
+    const playerNumber = readlineSync.question('Enter your number: ');
+    const playerNumberArr = playerNumber.split('');
+    return playerNumberArr;
+}
+
 function numberGenerator() {
     let number = [];
     number[0] = (1 + Math.random() * 9 - 1).toFixed(0);
@@ -10,5 +18,3 @@ function numberGenerator() {
     }
     return number;
 }
-
-numberGenerator();

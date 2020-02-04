@@ -1,7 +1,12 @@
 const readlineSync = require('readline-sync');
+var computerNumber = numberGenerator();
 
 function readNumber() {
     const playerNumber = readlineSync.question('Enter your number: ');
+    if(playerNumber.length != 4) {
+        console.log("Number length must be equal 4! Try again");
+        readNumber();
+    }
     const playerNumberArr = playerNumber.split('');
     return playerNumberArr;
 }
@@ -16,5 +21,34 @@ function numberGenerator() {
         }
         number[i] = newElement;
     }
+    console.log(number);
     return number;
 }
+
+function compareNumbers() {
+    let cows = 0, bulls = 0;
+    const playerNumber = readNumber();
+    for (let i = 0; i < computerNumber.length; i++) {
+        if (computerNumber[i] == playerNumber[i]) {
+            bulls++;
+        }
+    }
+    for(let i = 0; i < computerNumber.length; ++i) {
+        for(let j = 0; j < playerNumber.length; ++j) {
+            if (computerNumber[i] == playerNumber[i]) {
+                cows++;
+            }
+        }
+    }
+    if (bulls == 4) {
+        console.log("Thats right! You win!");
+    } else {
+        cows -= bulls;
+        console.log(`Bulls: ${bulls}, cows: ${cows}`);
+        console.clear();
+        compareNumbers();
+    }
+    console.clear();
+}
+
+compareNumbers();

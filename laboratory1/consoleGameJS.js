@@ -1,19 +1,14 @@
 function numberGenerator() {
     let number = [];
-    for (let i = 0; i < 4; ++i) {
-        let numberElem = (1 + Math.random() * 9 - 1).toFixed(0);
-        if (number.indexOf(numberElem)) {
-            
+    number[0] = (1 + Math.random() * 9 - 1).toFixed(0);
+    for(let i = 1; i < 4; i++) {
+        let newElement = (1 + Math.random() * 9 - 1).toFixed(0);
+        while (newElement == number[i - 1] || newElement == number[i - 2] || newElement == number[i - 3]) {
+            newElement = (1 + Math.random() * 9 - 1).toFixed(0);
         }
+        number[i] = newElement;
     }
-    // for (let i = 0; i < 4; i++) {
-    //     numberElement = (1 + Math.random() * 9 - 1).toFixed(0);
-    //     if (!number.indexOf(numberElement)) {
-    //         numberElement = (1 + Math.random() * 9 - 1).toFixed(0);
-    //     }
-    //     number[i] = numberElement;
-    // }
-    console.log(number.join(''));
+    return number;
 }
 
 numberGenerator();

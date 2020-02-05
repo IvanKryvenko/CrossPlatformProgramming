@@ -4,13 +4,12 @@ const computerNumber = numberGenerator();
 let tries = 0;
 
 function readNumber() {
-    const playerNumber = readlineSync.question('Enter your number: ');
+    const playerNumber = readlineSync.question('Введіть ваше число: ');
     if(playerNumber.length != 4) {
-        console.log("Number length must be equal 4! Try again");
+        console.log("Довжина числа має дорівнювати 4! Введіть число знову!");
         readNumber();
     }
     const playerNumberArr = playerNumber.split('');
-    console.log(playerNumberArr);
     return playerNumberArr;
 }
 
@@ -24,7 +23,6 @@ function numberGenerator() {
         }
         number[i] = newElement;
     }
-    console.log(number);
     return number;
 }
 
@@ -45,15 +43,17 @@ function compareNumbers() {
         }
     }
     if (bulls == 4) {
-        console.log(`Try: ${tries}`);
-        console.log("Thats right! You win!");
+        tries++;
+        console.log(`Спроб: ${tries}`);
+        console.log("Правильно! Ви виграли!");
     } else {
         tries++;
         cows -= bulls;
-        console.log(`Биків: ${bulls}, cows: ${cows}`);
-        console.log(`Try: ${tries}`);
+        console.log(`Биків: ${bulls}, Корів: ${cows}`);
+        console.log(`Спроб: ${tries}`);
         compareNumbers();
     }
 }
 
 compareNumbers();
+tries = 0;
